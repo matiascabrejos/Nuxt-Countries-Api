@@ -2,7 +2,7 @@
   <div>
     <section
       class="text-gray-700 body-font"
-      v-for="country in countries"
+      v-for="country in loadedCountries"
       :key="country.id"
     >
       <div class="container px-5 py-24 mx-auto">
@@ -20,9 +20,11 @@
                 hover:scale-110
               "
             >
-              <nuxt-link :countries="countries" to="/countryinfo"><img v-bind:src="country.flag" alt="" /></nuxt-link>
+              <nuxt-link :to="`/countries/${country.name}`"
+                ><img v-bind:src="country.flag" alt=""
+              /></nuxt-link>
               <h2 class="title-font font-medium text-3xl text-gray-900">
-                {{ country.name }}
+                 {{ country.name }}
               </h2>
               <p class="leading-relaxed">{{ country.capital }}</p>
             </div>
@@ -35,6 +37,10 @@
 
 <script>
 export default {
-  props: ['countries'],
+  computed: {
+    loadedCountries() {
+      return this.$store.getters.loadedCountries
+    },
+  },
 }
 </script>

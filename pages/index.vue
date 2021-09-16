@@ -34,5 +34,8 @@ export default {
       })
       .catch((e) => console.log(e))
   },
+/*   created() {
+    console.log(this.$store.getters.loadedCountries)
+  } */
 }
 </script>

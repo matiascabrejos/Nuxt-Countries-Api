@@ -49,9 +49,4 @@
   </main>
 </template>
 
-<script>
-export default {
-    props: ['countries']
-}
-</script>
 
