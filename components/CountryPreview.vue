@@ -5,7 +5,7 @@
       v-for="country in loadedCountries"
       :key="country.id"
     >
-      <div class="container px-5 py-24 mx-auto">
+      <div class="container px-5 py-6 mx-auto">
         <div class="flex flex-wrap -m-4 text-center">
           <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
             <div

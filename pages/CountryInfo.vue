@@ -1,12 +1,33 @@
 <template>
-  <div>
-    <h1>HI</h1>
-    <div class="grid grid-cols-4">
-      <ul v-for="country in loadedCountries" :key="country.id">
-        <li>{{ country.name }}</li>
-        <li>{{ country.capital }}</li>
-      </ul>
+  <div
+    class="
+      p-10
+      grid grid-cols-1
+      sm:grid-cols-1
+      md:grid-cols-3
+      lg:grid-cols-3
+      xl:grid-cols-3
+      gap-5
+    "
+  >
+    <!--Card 1-->
+    <div v-for="country in loadedCountries" :key="country.id" class="border-2 border-gray-600
+                px-4
+                py-6
+                rounded-lg
+                transform
+                transition
+                duration-500
+                hover:scale-110
+                text-center">
+      <nuxt-link :to="`/countries/${country.name}`"
+                ><img :src="country.flag" alt="" /></nuxt-link>
+      <h2 class="title-font font-medium text-2xl text-gray-900">
+        {{ country.name }}
+      </h2>
     </div>
+
+    <!--Card 2-->
   </div>
 </template>
 
@@ -23,3 +44,15 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+img {
+  height: 70%;
+  min-width: 100%;
+  object-fit: cover;
+}
+
+h2 {
+  padding-top: 20px;
+}
+</style>

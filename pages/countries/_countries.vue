@@ -2,7 +2,10 @@
   <div>
     <h1>Params: {{ $route.params.countries }}</h1>
     <ul v-for="country in specificCountry" :key="country.title">
-      <li>{{ country.capital }}</li>
+      <li><img v-bind:src="country.flag" alt="" class="max-w-md" /></li>
+      <li>Country: {{ country.name }}</li>
+      <li>Capital: {{ country.capital }}</li>
+      <li>Population: {{ country.population }}</li>
     </ul>
   </div>
 </template>
