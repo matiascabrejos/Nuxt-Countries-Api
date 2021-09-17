@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1 class="title-font font-medium text-4xl text-gray-900 text-center pt-4">Countries of Europe</h1>
-    <p class="title-font font-medium text-2xl text-gray-900 text-center pt-2">Click the flag for more info about the Countries</p>
+    <h1>Countries of Europe</h1>
+
     <div
       class="
         p-10
@@ -26,8 +26,6 @@
           duration-500
           hover:scale-110
           text-center
-          mr-6
-          mb-6
         "
       >
         <nuxt-link :to="`/countries/${country.name}`"
