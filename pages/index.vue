@@ -1,7 +1,30 @@
 <template>
   <div>
-    <h1 class="title-font font-medium text-4xl text-gray-900 text-center pt-4">Countries of Europe</h1>
-    <p class="title-font font-medium text-2xl text-gray-900 text-center pt-2">Click the flag for more info about the Countries</p>
+    <h1 class="title-font font-medium text-4xl text-gray-900 text-center pt-4">
+      Countries of Europe
+    </h1>
+    <p class="title-font font-medium text-2xl text-gray-900 text-center pt-2">
+      Click the flag for more info about the Countries
+    </p>
+    <form class="mb-4 w-full md:mb-0 md:w-1/4 mx-auto pt-6">
+    <label class="hidden" for="search-form">Search</label>
+    <input
+      class="
+        bg-grey-lightest
+        border-2
+        focus:border-orange
+        p-2
+        rounded-lg
+        shadow-inner
+        w-full
+      "
+      placeholder="Search"
+      type="text"
+      v-model="textSearch"
+      @keyup="countryFilter()"
+    />
+    </form>
+
     <div
       class="
         p-10
@@ -14,7 +37,7 @@
       "
     >
       <div
-        v-for="country in loadedCountries"
+        v-for="country in filteredCountries"
         :key="country.id"
         class="
           border-2 border-gray-600
@@ -42,16 +65,26 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default {
-  async() {
-    return axios.get('https://restcountries.eu/rest/v2/name/' + country.name)
+  data() {
+    return {
+      textSearch: '',
+      filteredCountries: []
+    }
+  },
+  methods: {
+    countryFilter() {
+      this.filteredCountries = this.loadedCountries.filter((country) => country.name.toLowerCase().includes(this.textSearch.toLowerCase()))
+    },
   },
   computed: {
     loadedCountries() {
       return this.$store.getters.loadedCountries
     },
   },
+  mounted() {
+    this.countryFilter()
+  }
 }
 </script>
 
