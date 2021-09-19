@@ -80,6 +80,7 @@ export default {
   computed: {
     loadedCountries() {
       return this.$store.getters.loadedCountries
+       this.filteredCountries = this.loadedCountries.filter((country) => country.name.toLowerCase().includes(this.textSearch.toLowerCase()))
     },
   },
   mounted() {
