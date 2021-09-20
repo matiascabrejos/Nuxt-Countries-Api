@@ -1,29 +1,40 @@
 <template>
-  <div>
-    <h1 class="title-font font-medium text-4xl text-gray-900 text-center pt-4">
+  <div class="bg-gray-900">
+    <h1 class="title-font font-medium text-4xl text-white text-center pt-4">
       Countries of Europe
     </h1>
-    <p class="title-font font-medium text-2xl text-gray-900 text-center pt-2">
-      Click the flag for more info about the Countries
+    <p class="title-font font-medium text-2xl text-white text-center pt-2">
+      Click the flag for more info about the countries
     </p>
-    <form class="mb-4 w-full md:mb-0 md:w-1/4 mx-auto pt-6">
-    <label class="hidden" for="search-form">Search</label>
-    <input
-      class="
-        bg-grey-lightest
-        border-2
-        focus:border-orange
-        p-2
-        rounded-lg
-        shadow-inner
-        w-full
-      "
-      placeholder="Search"
-      type="text"
-      v-model="textSearch"
-      @keyup="countryFilter()"
-    />
-    </form>
+
+    <div class="max-w-screen-md mx-auto p-5 pb-0">
+      <form class="w-full">
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full lg:w-60 mx-auto px-3">
+            <input
+              class="
+                font-bold
+                block
+                w-full
+                bg-gray-200
+                text-gray-900
+                border-2 border-gray-200
+                rounded
+                py-3
+                px-4
+                leading-tight
+                focus:outline-none focus:bg-white focus:border-red-700
+                text-center
+              "
+              v-model="textSearch"
+              @keyup="countryFilter()"
+              type="text"
+              placeholder="Search"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
 
     <div
       class="
@@ -40,7 +51,7 @@
         v-for="country in filteredCountries"
         :key="country.id"
         class="
-          border-2 border-gray-600
+          border-2 border-white
           px-4
           py-6
           rounded-lg
@@ -56,7 +67,7 @@
         <nuxt-link :to="`/countries/${country.name}`"
           ><img :src="country.flag" alt=""
         /></nuxt-link>
-        <h2 class="title-font font-medium text-2xl text-gray-900">
+        <h2 class="title-font font-medium text-2xl text-white">
           {{ country.name }}
         </h2>
       </div>
@@ -69,23 +80,24 @@ export default {
   data() {
     return {
       textSearch: '',
-      filteredCountries: []
+      filteredCountries: [],
     }
   },
   methods: {
     countryFilter() {
-      this.filteredCountries = this.loadedCountries.filter((country) => country.name.toLowerCase().includes(this.textSearch.toLowerCase()))
+      this.filteredCountries = this.loadedCountries.filter((country) =>
+        country.name.toLowerCase().includes(this.textSearch.toLowerCase())
+      )
     },
   },
   computed: {
     loadedCountries() {
       return this.$store.getters.loadedCountries
-       this.filteredCountries = this.loadedCountries.filter((country) => country.name.toLowerCase().includes(this.textSearch.toLowerCase()))
     },
   },
   mounted() {
     this.countryFilter()
-  }
+  },
 }
 </script>
 

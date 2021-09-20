@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="py-12 bg-blue-900">
+    <section class="py-12 bg-gray-900">
       <div
         class="container mx-auto"
         v-for="country in specificCountry"
