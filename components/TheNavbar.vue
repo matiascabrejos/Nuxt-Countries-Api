@@ -9,7 +9,7 @@
       text-center
     "
   >
-    <div class="flex items-center justify-between mb-4 md:mb-0">
+    <div class="items-center justify-between mb-4 md:mb-0">
       <nuxt-link to="/">
         <h1 class="leading-none text-2xl text-gray-900 mx-auto font-bold">
           <svg
